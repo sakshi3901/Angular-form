@@ -1,0 +1,104 @@
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+    <h1>Register</h1>
+    <div>
+      <label for="Username">Username</label>
+      <input
+        type="text"
+        placeholder="Enter New Username"
+        id="Username"
+        formControlName="username"
+      />
+      <div
+        class="danger"
+        *ngIf="UserName.errors?.['required'] && (UserName.touched || UserName.dirty)"
+      >
+        Username is Required!
+      </div>
+      <div
+        class="danger"
+        *ngIf="UserName.errors?.['minlength'] && (UserName.touched || UserName.dirty)"
+      >
+        Username is too short.
+      </div>
+      <div
+        class="danger"
+        *ngIf="UserName.errors?.['pattern'] && (UserName.touched || UserName.dirty)"
+      >
+        First letter should start with alphabet.
+      </div>
+    </div>
+    <pre></pre>
+    <div>
+      <label>Email</label>
+      <input
+        type="email"
+        placeholder="Enter New Email"
+        id="email"
+        formControlName="email"
+      />
+      <div
+        class="danger"
+        *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)"
+      >
+        Email is Required!
+      </div>
+      <div
+        class="danger"
+        *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)"
+      >
+        Email is Invalid.
+      </div>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Enter New Password"
+        formControlName="password"
+        id="password"
+      />
+      <div
+        class="danger"
+        *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)"
+      >
+        Password is Required!
+      </div>
+      <div
+        class="danger"
+        *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && (Password.touched || Password.dirty)"
+      >
+        Password should be between 8 to 15 letters.
+      </div>
+      <div
+        class="danger"
+        *ngIf="UserName.errors?.['pattern'] && (Password.touched || Password.dirty)"
+      >
+        First letter should start with alphabet.
+      </div>
+    </div>
+    <pre></pre>
+    <div>
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        placeholder="Enter Password Again"
+        formControlName="confirm"
+        id="confirm"
+      />
+      <div class="danger" [ngStyle]="{ display: confirmPass }">
+        Password Do Not Match.
+      </div>
+    </div>
+    <pre></pre>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
