@@ -1,0 +1,59 @@
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+    <h1>Login</h1>
+    <div>
+      <label>Email</label>
+      <input
+        type="email"
+        placeholder="Enter Your Email"
+        id="email"
+        formControlName="email"
+      />
+      <div
+        class="danger"
+        *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)"
+      >
+        Email is Required!
+      </div>
+      <div
+        class="danger"
+        *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)"
+      >
+        Email is Invalid.
+      </div>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Enter Your Password"
+        formControlName="password"
+        id="password"
+      />
+      <div
+        class="danger"
+        *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)"
+      >
+        Password is Required!
+      </div>
+      <div
+        class="danger"
+        *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && (Password.touched || Password.dirty)"
+      >
+        Password should be between 8 to 15 letters.
+      </div>
+    </div>
+    <pre></pre>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+    <span>Didn't Have Register Yet? <a routerLink="/">Register Here</a></span>
+  </form>
+</div>

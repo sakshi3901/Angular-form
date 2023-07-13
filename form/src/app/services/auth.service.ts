@@ -9,6 +9,9 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   baseServerUrl = 'http://localhost:4000/';
   registerUser(data: any): Observable<any> {
-    return this.http.post(this.baseServerUrl + 'register', data);
+    return this.http.post(this.baseServerUrl + '', data);
+  }
+  loginUser(data: any): Observable<any> {
+    return this.http.post(this.baseServerUrl + 'login', data);
   }
 }

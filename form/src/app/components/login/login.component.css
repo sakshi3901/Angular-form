@@ -22,7 +22,7 @@ div {
 }
 .shape:last-child {
   left: 55%;
-  top: 60%;
+  top: 50%;
   background: linear-gradient(to right, #ff512f, #f09819);
 }
 form {

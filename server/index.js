@@ -25,7 +25,7 @@ app.use(
 
 mongoose.connect(process.env.MONGO_URL);
 
-app.post("/register", async (req, res) => {
+app.post("/", async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
@@ -60,16 +60,6 @@ app.post("/login", async (req, res) => {
     }
   } else {
     res.json("not found");
-  }
-});
-
-app.post("/logout", (req, res) => {
-  const { token } = req.cookies;
-  if (token) {
-    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-      if (err) throw err;
-    });
-    res.cookie("token", "").json(true);
   }
 });
 
